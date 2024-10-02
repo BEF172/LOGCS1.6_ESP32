@@ -44,23 +44,23 @@ simple_html = """<!DOCTYPE html>
 <head>
     <title>Logs de Counter-Strike</title>
     <style>
-        body {{ font-family: Arial, sans-serif; background-color: #222; color: #fff; }}  # Estilo del cuerpo
-        h1 {{ color: #4CAF50; }}  # Estilo del encabezado principal
-        pre {{ background-color: #333; padding: 10px; border-radius: 5px; }}  # Estilo para el área de logs
+        body {{ font-family: Arial, sans-serif; background-color: #222; color: #fff; }} 
+        h1 {{ color: #4CAF50; }}  
+        pre {{ background-color: #333; padding: 10px; border-radius: 5px; }} 
     </style>
 </head>
 <body>
     <h1>Logs de Counter-Strike</h1>
-    <h2 id="contador">Muertes: {muerte_count} | Asesinatos: {mate_count}</h2>  # Contadores de muertes y asesinatos
-    <pre id="logs">Cargando...</pre>  # Área para mostrar los logs
+    <h2 id="contador">Muertes: {muerte_count} | Asesinatos: {mate_count}</h2>
+    <pre id="logs">Cargando...</pre>  
     <script>
         setInterval(function() {{
-            fetch('/logs')  # Solicita los logs cada segundo
-                .then(response => response.text())  # Convierte la respuesta a texto
+            fetch('/logs')  
+                .then(response => response.text())  
                 .then(data => {{
-                    const [contador, ...logs] = data.split('\\n');  # Divide los datos en contador y logs
-                    document.getElementById('logs').innerText = logs.join('\\n');  # Actualiza el área de logs
-                    document.getElementById('contador').innerText = contador;  # Actualiza el contador
+                    const [contador, ...logs] = data.split('\\n'); 
+                    document.getElementById('logs').innerText = logs.join('\\n'); 
+                    document.getElementById('contador').innerText = contador; 
                 }});
         }}, 1000);  // Actualiza cada segundo
     </script>
