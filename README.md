@@ -2,8 +2,24 @@
 
 Hola, esto conecta el servidor UDP del juego "Counter-Strike 1.6" utilizando MicroPython (Firmware Python para ESP32). Para poder usarlo, es necesario activar los comandos `logaddress_add` y `log on` en el juego.
 
+**Testeado en:**
+ESP32 WROOM 32 CH9102X
+MicroPython V1.23.0
+Python 3.12.6
+
+### Primeros pasos:
+
+1. Descargar MicroPython v1.23.0 (2024-06-02): [Descargar aquí](https://micropython.org/download/ESP32_GENERIC/)
+2. Descargar Python (yo tengo la versión 3.12.6): [Descargar aquí](https://www.python.org/downloads/)
+3. Instalar esptool: `pip install esptool`
+4. Borrar la memoria del ESP32: `esptool.py --port COM3 erase_flash`
+5. Flashear MicroPython en el ESP32: 
+   ```bash
+   esptool.py --chip esp32 --port COM3 --baud 115200 write_flash -z 0x1000 Ruta\archivo.bin
+
 ### Parte ESP32:
-Necesitas tener VS Code con la extensión **Pymakr** para poder enviar los archivos al ESP32.
+
+Necesitas tener VS Code con la extensión **Pymakr** para poder enviar los archivos al ESP32.  
 
 1. Abre VS Code
 2. Descarga la extension **Pymakr** y **Node.js** para que funcione bien.
